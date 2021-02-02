@@ -2,8 +2,9 @@ unit UFrmExample;
 
 interface
 
-uses Vcl.Forms, System.ImageList, Vcl.ImgList, Vcl.Controls, Vcl.StdCtrls,
-  System.Classes, System.Types, Vcl.Graphics, DzListHeader;
+uses Vcl.Forms, Vcl.ImgList, Vcl.Controls, Vcl.StdCtrls,
+  System.Classes, System.Types, Vcl.Graphics, DzListHeader
+  {$IF CompilerVersion >= 29}, System.ImageList{$ENDIF};
 
 type
   TForm1 = class(TForm)
@@ -29,16 +30,16 @@ uses System.SysUtils, System.IniFiles;
 
 type TPerson = class
   ID: Integer;
-  Name, Gender, Sector: String;
+  Name, Gender, Sector: string;
   Amount: Double;
-  Age: Byte; Birthday: String;
-  class function New(aID: Integer; const aName, aGender, aSector: String;
-    aAge: Byte; const aBirthday: String;
+  Age: Byte; Birthday: string;
+  class function New(aID: Integer; const aName, aGender, aSector: string;
+    aAge: Byte; const aBirthday: string;
     aAmount: Double): TPerson;
 end;
 
-class function TPerson.New(aID: Integer; const aName, aGender, aSector: String;
-    aAge: Byte; const aBirthday: String;
+class function TPerson.New(aID: Integer; const aName, aGender, aSector: string;
+    aAge: Byte; const aBirthday: string;
     aAmount: Double): TPerson;
 begin
   Result := TPerson.Create;
@@ -54,7 +55,7 @@ end;
 
 //
 
-function GetIniFile: String;
+function GetIniFile: string;
 begin
   Result := ExtractFilePath(Application.ExeName)+'Custom.ini';
 end;
